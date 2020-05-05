@@ -13,7 +13,6 @@ unsolved = True
 print("H A N G M A N")
 # print(f"Guess the word {modified_string}" + "-" * rem_num + ": > ", end='')
 print(f"Guess the word " + hidden_word + ": > ", end='')
-word = input()
 
 while tries > -1 and unsolved:
     attempt_word = input()
@@ -21,10 +20,14 @@ while tries > -1 and unsolved:
         print("Good Choice!")
     else:
         print("Bad Choice")
+        if tries != 1:
+            print(f"You have {tries} tries left.")
+        else:
+            print(f"You have 1 try left.")
         tries -= 1
 
-if word == answer:
-    print("You survived!")
+if unsolved:
+    print("You died!")
 else:
-    print("You are hanged!")
+    print("You live!")
 
