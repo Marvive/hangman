@@ -5,7 +5,7 @@ correct = random.choice(choices)
 correct_length = len(correct)
 # removed = correct[3:correct_length]
 # rem_num = len(removed)
-modified_string = correct.rstrip(removed)
+# modified_string = correct.rstrip(removed)
 
 
 print("H A N G M A N")
@@ -15,5 +15,5 @@ word = input()
 
 if word == correct:
     print("You survived!")
-else:
+else:
     print("You are hanged!")
