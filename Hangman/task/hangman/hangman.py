@@ -4,17 +4,30 @@ hint = ['-' for i in range(len(guess_word))]
 tries = 0
 used_letters = []
 
-print('H A N G M A N')
+
+def start_menu():
+    print('H A N G M A N')
+    start = input('Type "play" to play the game, "exit" to quit:')
+    if start.lower() == "exit":
+        exit()
+    elif start.lower() != "play":
+        start_menu()
+
+
+start_menu()
+
 while tries < 8:
+    hint_output = ''.join(hint)
+    if '-' not in hint_output:
+        break
     print()
-    print(''.join(hint))
+    print(hint_output)
     char = input("Input a letter:")
 
     if len(char) != 1:
         print("You should print a single letter")
         continue
     elif char in used_letters:
-        # tries += 1
         print("You already typed this letter")
         continue
     elif char.isupper() or not char.isalpha():
@@ -35,6 +48,3 @@ if tries < 8:
     print("You Survived!")
 else:
     print("You are hanged!")
-
-# print('''Thanks for playing!
-# We'll see how well you did in the next stage''')
