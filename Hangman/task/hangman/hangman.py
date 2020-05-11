@@ -1,45 +1,31 @@
 import random
+guess_word = list(random.choice(['python', 'java', 'kotlin', 'javascript']))
+hint = ['-' for i in range(len(guess_word))]
+tries = 0
+used_letters = []
 
-choices = ['python', 'java', 'kotlin', 'javascript']
-answer = random.choice(choices)
-answer_length = len(answer)
-answer_array = list(answer)
-hidden_word = answer_length * "-"
-hidden_word_array = list(hidden_word)
-tries = 8
-unsolved = True
-
-print("H A N G M A N")
-print()
-# print(f"Guess the word " + hidden_word + ": > ", end='')
-
-while tries > -1 and unsolved:
-    print(hidden_word)
-    attempt_word = input("Input a letter : ")
-    if attempt_word in answer:
-        # print("Good Choice!")
-        counter = 0
-        for chars in answer:
-            if chars == attempt_word:
-                hidden_word_array[counter] = chars
-            counter += 1
-        hidden_word = ''.join(hidden_word_array)
+print('H A N G M A N')
+while tries < 8:
+    print()
+    print(''.join(hint))
+    char = input("Input a letter:")
+    if char in used_letters:
+        tries += 1
+        print("No improvements")
+        continue
+    if char in guess_word:
+        for i, v in enumerate(guess_word):
+            if char == v:
+                hint[i] = v
+                used_letters.append(char)
     else:
         print("No such letter in the word")
-        # if tries != 1:
-        #     print(f"You have {tries} tries left.")
-        # else:
-        #     print(f"You have 1 try left.")
-        tries -= 1
-    # print(hidden_word)
-    print()
-    if "-" not in hidden_word:
-        unsolved = False
-        break
+        tries += 1
 
-print("Thanks for playing!")
-# if unsolved:
-#     print("You died!")
-# else:
-#     print("You live!")
+if tries < 8:
+    print("You Survived!")
+else:
+    print("You are hanged!")
 
+# print('''Thanks for playing!
+# We'll see how well you did in the next stage''')

@@ -194,5 +194,5 @@ files:
         print("You are hanged!")
   learner_created: true
 feedback_link: https://hyperskill.org/projects/69/stages/376/implement
-status: Failed
-record: -1
+status: Solved
+record: 5
