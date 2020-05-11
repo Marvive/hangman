@@ -9,10 +9,18 @@ while tries < 8:
     print()
     print(''.join(hint))
     char = input("Input a letter:")
-    if char in used_letters:
-        tries += 1
-        print("No improvements")
+
+    if len(char) != 1:
+        print("You should print a single letter")
         continue
+    elif char in used_letters:
+        # tries += 1
+        print("You already typed this letter")
+        continue
+    elif char.isupper() or not char.isalpha():
+        print("It is not an ASCII lowercase letter")
+        continue
+
     if char in guess_word:
         for i, v in enumerate(guess_word):
             if char == v:
@@ -20,6 +28,7 @@ while tries < 8:
                 used_letters.append(char)
     else:
         print("No such letter in the word")
+        used_letters.append(char)
         tries += 1
 
 if tries < 8:
